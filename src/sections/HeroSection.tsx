@@ -1,6 +1,9 @@
 import { useRef } from 'react';
 import { useHeroCanvas } from '../hooks/useHeroCanvas';
+<<<<<<< HEAD
 import gsap from 'gsap';
+=======
+>>>>>>> 50d74942736eff6c8c9a49b5f069202d1d28c8f1
 
 export default function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -8,6 +11,7 @@ export default function HeroSection() {
 
   useHeroCanvas(canvasRef, sectionRef);
 
+<<<<<<< HEAD
   const handleExploreClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const target = document.querySelector('#dough');
@@ -38,10 +42,17 @@ export default function HeroSection() {
     <section id="kitchen" className="hero-scroll-driver" ref={sectionRef}>
       <div className="hero-sticky">
         {/* Scroll Canvas */}
+=======
+  return (
+    <section id="kitchen" className="hero-scroll-driver" ref={sectionRef}>
+      <div className="hero-sticky">
+        {/* Scroll Canvas Wrapper */}
+>>>>>>> 50d74942736eff6c8c9a49b5f069202d1d28c8f1
         <div className="hero-canvas-wrap">
           <canvas id="hero-canvas" ref={canvasRef} />
         </div>
 
+<<<<<<< HEAD
         {/* Desktop Cinematic Overlay */}
         {/* <div className="hero-overlay">
           <h1 className="hero-title">
@@ -61,6 +72,8 @@ export default function HeroSection() {
           </div>
         </div> */}
 
+=======
+>>>>>>> 50d74942736eff6c8c9a49b5f069202d1d28c8f1
         {/* Mobile Hero Content Overlay */}
         <div className="hero-mobile-overlay">
           <div className="hero-mobile-content">
@@ -74,11 +87,19 @@ export default function HeroSection() {
               made from scratch.
             </p>
             <div className="hero-mobile-ctas">
+<<<<<<< HEAD
               <a href="#dough" className="btn btn-primary hero-mobile-btn" onClick={handleExploreClick}>
                 Explore the Kitchen
               </a>
               <a href="#order" className="btn btn-secondary hero-mobile-btn">
                 Place an Order
+=======
+              <a href="#specials" className="btn btn-neon hero-mobile-btn">
+                🍕 View Menu
+              </a>
+              <a href="#order" className="btn btn-primary hero-mobile-btn">
+                ⚡ Place Order
+>>>>>>> 50d74942736eff6c8c9a49b5f069202d1d28c8f1
               </a>
             </div>
           </div>

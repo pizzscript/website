@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
+<<<<<<< HEAD
 
 interface NavbarProps {
   isScrolled: boolean;
@@ -30,6 +31,44 @@ export default function Navbar({ isScrolled, isNavbarVisible = true }: NavbarPro
   // Active section highlighting via IntersectionObserver
   useEffect(() => {
     const sections = document.querySelectorAll('main .section, main .cin-section, main .sequence-scroll-driver');
+=======
+import { useLottie } from '../hooks/useLottie';
+
+interface NavbarProps {
+  isScrolled: boolean;
+}
+
+const NAV_LINKS = [
+  { href: '#specials', label: 'Modules', section: 'specials' },
+  { href: '#pantry', label: 'Mainframe', section: 'pantry' },
+  { href: '#recipe', label: 'Deployment', section: 'recipe' },
+  { href: '#chef-specials', label: 'Case Studies', section: 'chef-specials' },
+  { href: '#reviews', label: 'User Logs', section: 'reviews' },
+];
+
+const MOBILE_LINKS = [
+  { href: '#specials', label: 'Modules' },
+  { href: '#pantry', label: 'Mainframe' },
+  { href: '#recipe', label: 'Deployment' },
+  { href: '#chef-specials', label: 'Portfolio' },
+  { href: '#reviews', label: 'Client Logs' },
+];
+
+export default function Navbar({ isScrolled }: NavbarProps) {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
+  const navLottieRef = useRef<HTMLDivElement>(null);
+
+  const lottieInstance = useLottie(navLottieRef, {
+    path: '/assets/animations/pizza-glitch-animation.json',
+    loop: true,
+    autoplay: true,
+  });
+
+  // Active section highlighting via IntersectionObserver
+  useEffect(() => {
+    const sections = document.querySelectorAll('main .section');
+>>>>>>> 50d74942736eff6c8c9a49b5f069202d1d28c8f1
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -39,7 +78,11 @@ export default function Navbar({ isScrolled, isNavbarVisible = true }: NavbarPro
         });
       },
       {
+<<<<<<< HEAD
         threshold: 0.2,
+=======
+        threshold: 0.3,
+>>>>>>> 50d74942736eff6c8c9a49b5f069202d1d28c8f1
         rootMargin: '-80px 0px -50% 0px',
       }
     );
@@ -90,9 +133,28 @@ export default function Navbar({ isScrolled, isNavbarVisible = true }: NavbarPro
     []
   );
 
+<<<<<<< HEAD
   return (
     <header
       className={`navbar${isScrolled ? ' scrolled' : ''}${!isNavbarVisible && !mobileOpen ? ' navbar-hidden' : ''}`}
+=======
+  const handleLottieHover = useCallback(() => {
+    if (lottieInstance.current) {
+      lottieInstance.current.stop();
+      lottieInstance.current.play();
+    }
+  }, [lottieInstance]);
+
+  const handleLottieLeave = useCallback(() => {
+    if (lottieInstance.current) {
+      lottieInstance.current.stop();
+    }
+  }, [lottieInstance]);
+
+  return (
+    <header
+      className={`navbar${isScrolled ? ' scrolled' : ''}`}
+>>>>>>> 50d74942736eff6c8c9a49b5f069202d1d28c8f1
       id="navbar"
       role="banner"
     >
@@ -103,11 +165,21 @@ export default function Navbar({ isScrolled, isNavbarVisible = true }: NavbarPro
           aria-label="Pizza Script — Back to top"
           onClick={(e) => handleNavClick(e, '#kitchen')}
         >
+<<<<<<< HEAD
           <img
             ref={logoRef}
             src="/assets/images/pizzascript-logo.webp"
             alt="Pizza Script"
             style={{ width: 36, height: 36, borderRadius: '50%', objectFit: 'cover' }}
+=======
+          <div
+            ref={navLottieRef}
+            id="nav-lottie"
+            className="logo-lottie"
+            style={{ width: 56, height: 56 }}
+            onMouseEnter={handleLottieHover}
+            onMouseLeave={handleLottieLeave}
+>>>>>>> 50d74942736eff6c8c9a49b5f069202d1d28c8f1
           />
           <span className="logo-text">Pizza Script</span>
         </a>
@@ -130,12 +202,20 @@ export default function Navbar({ isScrolled, isNavbarVisible = true }: NavbarPro
           ))}
           <a
             href="#order"
+<<<<<<< HEAD
             className="btn btn-primary navbar-cta"
             aria-label="Go to the contact form"
             onClick={(e) => handleNavClick(e, '#order')}
             style={{ padding: '10px 24px', fontSize: '0.75rem' }}
           >
             Get in Touch
+=======
+            className="btn btn-neon navbar-cta"
+            aria-label="Go to the contact form to hire me"
+            onClick={(e) => handleNavClick(e, '#order')}
+          >
+            ⚡ Initialize
+>>>>>>> 50d74942736eff6c8c9a49b5f069202d1d28c8f1
           </a>
         </nav>
 
@@ -175,7 +255,11 @@ export default function Navbar({ isScrolled, isNavbarVisible = true }: NavbarPro
           className="btn btn-primary"
           onClick={(e) => handleNavClick(e, '#order')}
         >
+<<<<<<< HEAD
           Get in Touch
+=======
+          ⚡ Initialize
+>>>>>>> 50d74942736eff6c8c9a49b5f069202d1d28c8f1
         </a>
       </div>
     </header>
